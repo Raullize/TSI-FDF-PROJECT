@@ -10,7 +10,7 @@ interface CategoryCardProps {
 export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link href={`/products?category=${category.slug}`} className="group block text-center">
-      <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-3 rounded-full overflow-hidden border-4 border-white shadow-md group-hover:border-yellow-300 group-hover:shadow-lg transition-all duration-300">
+      <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto mb-3 rounded-full overflow-hidden border-4 border-white shadow-md group-hover:border-amber-200 group-hover:shadow-lg transition-all duration-300">
         <Image
           src={category.image.replace('/public', '')}
           alt={category.name}
