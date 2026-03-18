@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
+import { Flower2 } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -11,13 +11,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image 
-              src="/logos/logo.png" 
-              alt="Armazém Girassol" 
-              width={32} 
-              height={32} 
-              className="w-8 h-8 object-contain" 
-            />
+            <Flower2 className="w-8 h-8 text-amber-600" />
             <span className="text-xl md:text-2xl font-bold text-amber-900 font-serif">
               Armazém Girassol
             </span>
