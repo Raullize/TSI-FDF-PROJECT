@@ -67,7 +67,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Descrição e Unidade */}
-          <p className="text-sm text-gray-500 line-clamp-1 mb-4">
+          <p className="text-sm text-gray-500 line-clamp-1 mb-2">
             {product.description}
           </p>
           <p className="text-xs font-medium text-amber-700 bg-amber-50 inline-block px-2 py-1 rounded-md mb-2">
@@ -79,7 +79,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <Button 
           variant="outline" 
           fullWidth 
-          className="rounded-full border-gray-300 !text-gray-900 hover:!bg-gray-50 font-normal"
+          className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50 font-normal"
         >
           Comprar agora
         </Button>
