@@ -23,7 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
         {product.isBestSeller && (
           <div className="absolute top-3 left-3 bg-green-700 text-green-50 text-xs font-bold px-2 py-1 rounded-lg shadow-sm">
-            Mais Vendido
+            Mais Vendidos
           </div>
         )}
       </div>
