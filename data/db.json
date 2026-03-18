@@ -68,13 +68,14 @@
       "categoryId": 1,
       "name": "Açafrão Puro",
       "description": "Cúrcuma (Açafrão da Terra) puro, excelente anti-inflamatório natural.",
-      "price": 5,
+      "price": 6.4,
       "rating": 0,
       "reviewCount": 0,
       "unit": "pacote 500g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
-      "stock": 40
+      "stock": 40,
+      "promotionalPrice": 5
     },
     {
       "id": 103,
@@ -94,40 +95,42 @@
       "categoryId": 1,
       "name": "Lemon Pepper",
       "description": "Tempero cítrico ideal para frangos, peixes e saladas.",
-      "price": 4.8,
+      "price": 6.38,
       "unit": "100g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 35,
       "rating": 4,
-      "reviewCount": 131
+      "reviewCount": 131,
+      "promotionalPrice": 4.8
     },
     {
       "id": 105,
       "categoryId": 1,
       "name": "Sal Rosa do Himalaia Fino",
       "description": "Sal rosa puro, rico em minerais e com menor teor de sódio que o sal comum.",
-      "price": 10,
+      "price": 13.7,
       "unit": "1kg",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 60,
       "rating": 0,
       "reviewCount": 0,
-      "originalPrice": 13.7
+      "promotionalPrice": 10
     },
     {
       "id": 201,
       "categoryId": 2,
       "name": "Chia",
       "description": "Semente de chia rica em ômega 3, fibras e proteínas.",
-      "price": 6,
+      "price": 8.58,
       "unit": "100g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 20,
       "rating": 5,
-      "reviewCount": 47
+      "reviewCount": 47,
+      "promotionalPrice": 6
     },
     {
       "id": 202,
@@ -173,13 +176,14 @@
       "categoryId": 3,
       "name": "Hibisco",
       "description": "Flor de hibisco desidratada para chás, auxilia na retenção de líquidos.",
-      "price": 7,
+      "price": 8.75,
       "unit": "100g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 15,
       "rating": 5,
-      "reviewCount": 130
+      "reviewCount": 130,
+      "promotionalPrice": 7
     },
     {
       "id": 302,
@@ -212,27 +216,28 @@
       "categoryId": 4,
       "name": "Damasco Turco",
       "description": "Damascos doces e macios, importados da Turquia.",
-      "price": 12,
+      "price": 14.28,
       "unit": "100g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 30,
       "rating": 3,
-      "reviewCount": 24
+      "reviewCount": 24,
+      "promotionalPrice": 12
     },
     {
       "id": 402,
       "categoryId": 4,
       "name": "Uva Passa Preta",
       "description": "Uvas passas pretas sem semente, ideais para receitas e snacks.",
-      "price": 3,
+      "price": 3.78,
       "unit": "100g",
       "isBestSeller": false,
       "image": "/images/products/noImage.png",
       "stock": 80,
       "rating": 0,
       "reviewCount": 0,
-      "originalPrice": 3.78
+      "promotionalPrice": 3
     },
     {
       "id": 501,
@@ -252,26 +257,28 @@
       "categoryId": 5,
       "name": "Farinha de Aveia",
       "description": "Farinha de aveia integral, rica em beta-glucanas.",
-      "price": 2.5,
+      "price": 3.1,
       "unit": "100g",
       "isBestSeller": false,
       "image": "/images/products/noImage.png",
       "stock": 0,
       "rating": 0,
-      "reviewCount": 0
+      "reviewCount": 0,
+      "promotionalPrice": 2.5
     },
     {
       "id": 601,
       "categoryId": 6,
       "name": "Castanha de Caju W1",
       "description": "Castanha de caju torrada e salgada, graúda e crocante.",
-      "price": 13.5,
+      "price": 16.74,
       "unit": "100g",
       "isBestSeller": true,
       "image": "/images/products/noImage.png",
       "stock": 22,
       "rating": 5,
-      "reviewCount": 102
+      "reviewCount": 102,
+      "promotionalPrice": 13.5
     },
     {
       "id": 602,

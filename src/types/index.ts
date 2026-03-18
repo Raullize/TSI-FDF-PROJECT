@@ -11,7 +11,7 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  originalPrice?: number;
+  promotionalPrice?: number;
   rating?: number;
   reviewCount?: number;
   unit: string;

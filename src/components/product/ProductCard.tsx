@@ -33,11 +33,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Preços */}
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg font-medium text-gray-900">
-              {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}
+              {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.promotionalPrice || product.price)}
             </span>
-            {product.originalPrice && (
+            {product.promotionalPrice && (
               <span className="text-sm text-gray-400 line-through">
-                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.originalPrice)}
+                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}
               </span>
             )}
           </div>
