@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '../ui/Container';
 import Button from '../ui/Button';
 
@@ -10,7 +11,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logos/logo.png" alt="Armazém Girassol" className="w-8 h-8" />
+            <Image 
+              src="/logos/logo.png" 
+              alt="Armazém Girassol" 
+              width={32} 
+              height={32} 
+              className="w-8 h-8 object-contain" 
+            />
             <span className="text-xl md:text-2xl font-bold text-amber-900 font-serif">
               Armazém Girassol
             </span>
