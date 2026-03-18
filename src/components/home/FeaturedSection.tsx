@@ -88,9 +88,9 @@ export default function FeaturedSection({
               </button>
             </div>
 
-            <Link href={viewAllLink} className="text-green-700 font-medium hover:text-green-800 flex items-center gap-1 group whitespace-nowrap">
+            <Link href={viewAllLink} className="text-green-700 font-medium hover:text-green-800 flex items-center gap-1 whitespace-nowrap">
               Ver tudo
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span>→</span>
             </Link>
           </div>
         </div>
