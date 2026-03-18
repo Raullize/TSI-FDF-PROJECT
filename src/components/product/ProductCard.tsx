@@ -11,6 +11,10 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const rating = product.rating || 0;
   
+  const discountPercentage = product.promotionalPrice 
+    ? Math.round(((product.price - product.promotionalPrice) / product.price) * 100)
+    : 0;
+  
   return (
     <div className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
       <div className="relative aspect-square overflow-hidden bg-gray-50">
@@ -24,6 +28,12 @@ export default function ProductCard({ product }: ProductCardProps) {
         {product.isBestSeller && (
           <div className="absolute top-3 left-3 bg-green-700 text-green-50 text-xs font-bold px-2 py-1 rounded-lg shadow-sm">
             Mais Vendidos
+          </div>
+        )}
+        
+        {discountPercentage > 0 && (
+          <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-lg shadow-sm">
+            -{discountPercentage}%
           </div>
         )}
       </div>
