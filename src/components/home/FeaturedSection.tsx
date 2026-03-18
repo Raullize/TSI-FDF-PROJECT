@@ -7,7 +7,7 @@ import ProductCard from '../product/ProductCard';
 import { Product } from '@/types';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 interface FeaturedSectionProps {
   title: string;
@@ -90,7 +90,7 @@ export default function FeaturedSection({
 
             <Link href={viewAllLink} className="text-green-700 font-medium hover:text-green-800 flex items-center gap-1 whitespace-nowrap">
               Ver tudo
-              <span>→</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
