@@ -1,16 +1,67 @@
-# React + Vite
+<h1 align="center"> Armazém Girassol </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+</p>
 
-Currently, two official plugins are available:
+## Descrição
+O Armazém Girassol é um e-commerce moderno especializado em produtos naturais, oferecendo uma experiência de compra intuitiva e responsiva. O projeto foca na usabilidade, design limpo e facilidade de navegação, permitindo que os clientes montem seus carrinhos e finalizem pedidos diretamente via WhatsApp.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## React Compiler
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Context API (Gerenciamento de Estado)
+- JSON Server (Mock Data)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Demonstração
 
-## Expanding the ESLint configuration
+Veja o Armazém Girassol em ação! Confira nossa demonstração completa das principais funcionalidades:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<div align="center">
+  <img src="public/demo/demo.gif" alt="Demonstração do Armazém Girassol" width="800">
+</div>
+
+> **Quer ver mais detalhes?** [Clique aqui para visualizar em tamanho completo](public/demo/demo.gif)
+
+> **Nota**: A demonstração pode demorar alguns segundos para carregar devido ao tamanho do arquivo. Por favor, aguarde!
+
+## Como Executar o Projeto
+
+### Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+
+### Instalação
+
+1. **Clone o repositório**
+   ```bash
+   $ git clone https://github.com/Raullize/armazem-girassol.git
+   $ cd armazem-girassol
+   ```
+
+2. **Instale as dependências**
+   ```bash
+   $ npm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento**
+   ```bash
+   $ npm run dev
+   ```
+   Acesse http://localhost:3000 no seu navegador.
+
+## Contribuindo
+
+Se você deseja contribuir para este projeto, siga estas etapas:
+
+1. Bifurque este repositório.
+2. Crie um branch: `git checkout -b feature/nova-feature`.
+3. Faça suas alterações e confirme-as: `git commit -m 'Adiciona nova feature'`
+4. Envie para o branch original: `git push origin feature/nova-feature`
+5. Crie a solicitação de pull.
