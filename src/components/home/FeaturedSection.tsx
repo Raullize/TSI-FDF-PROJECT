@@ -96,10 +96,10 @@ export default function FeaturedSection({
         </div>
 
         <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden -my-4 py-4" ref={emblaRef}>
             <div className="flex -ml-4 md:-ml-6 touch-pan-y">
               {products.map((product) => (
-                <div key={product.id} className="flex-[0_0_80%] sm:flex-[0_0_50%] lg:flex-[0_0_20%] pl-4 md:pl-6">
+                <div key={product.id} className="flex-[0_0_80%] sm:flex-[0_0_50%] lg:flex-[0_0_20%] pl-4 md:pl-6 pb-2">
                   <ProductCard product={product} />
                 </div>
               ))}
