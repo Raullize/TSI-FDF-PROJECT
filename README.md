@@ -35,7 +35,7 @@ Veja o Armazém Girassol em ação! Confira nossa demonstração completa das pr
 ### Pré-requisitos
 
 - Node.js (versão 18 ou superior)
-- npm ou yarn
+- pnpm (gerenciador de pacotes recomendado)
 
 ### Instalação
 
@@ -47,12 +47,12 @@ Veja o Armazém Girassol em ação! Confira nossa demonstração completa das pr
 
 2. **Instale as dependências**
    ```bash
-   $ npm install
+   $ pnpm install
    ```
 
 3. **Inicie o servidor de desenvolvimento**
    ```bash
-   $ npm run dev
+   $ pnpm dev
    ```
    Acesse http://localhost:3000 no seu navegador.
 
