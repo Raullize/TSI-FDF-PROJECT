@@ -88,8 +88,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Botão de Compra */}
         <Button 
           variant="outline" 
-          fullWidth 
-          className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50 font-normal"
+          className="w-full rounded-full border-gray-300 text-gray-900 hover:bg-gray-50 font-normal"
         >
           Comprar agora
         </Button>
