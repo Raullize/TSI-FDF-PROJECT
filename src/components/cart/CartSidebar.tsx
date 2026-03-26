@@ -60,9 +60,6 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
           <SheetTitle className="flex items-center gap-2 text-amber-900 font-serif text-2xl">
             <ShoppingCart className="w-6 h-6" />
             Seu Carrinho
-            <span className="ml-auto bg-amber-100 text-amber-900 text-sm font-bold w-6 h-6 rounded-full flex items-center justify-center font-sans">
-              {MOCK_CART_ITEMS.length}
-            </span>
           </SheetTitle>
         </SheetHeader>
 
