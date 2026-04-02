@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ShoppingCart, Trash2, Plus, Minus } from 'lucide-react';
 import {
   Sheet,
@@ -10,42 +11,22 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
+  SheetClose,
 } from '@/components/ui/sheet';
-import Button from '../ui/Button';
-
-const MOCK_CART_ITEMS = [
-  {
-    id: 101,
-    name: "Páprica Defumada",
-    price: 4.50,
-    quantity: 2,
-    image: "/images/products/noImage.png",
-    unit: "100g"
-  },
-  {
-    id: 102,
-    name: "Açafrão Puro",
-    price: 5.00,
-    promotionalPrice: 4.20,
-    quantity: 1,
-    image: "/images/products/noImage.png",
-    unit: "pacote 500g"
-  },
-  {
-    id: 601,
-    name: "Castanha de Caju W1",
-    price: 13.50,
-    quantity: 3,
-    image: "/images/products/noImage.png",
-    unit: "100g"
-  }
-];
+import { Button } from '../ui/Button';
+import { MOCK_CART_ITEMS } from './mock';
 
 export default function CartSidebar({ children }: { children: React.ReactNode }) {
-  const subtotal = MOCK_CART_ITEMS.reduce((acc, item) => {
+  const subtotalOriginal = MOCK_CART_ITEMS.reduce((acc, item) => {
+    return acc + (item.price * item.quantity);
+  }, 0);
+
+  const subtotalComDesconto = MOCK_CART_ITEMS.reduce((acc, item) => {
     const itemPrice = item.promotionalPrice || item.price;
     return acc + (itemPrice * item.quantity);
   }, 0);
+
+  const totalDesconto = subtotalOriginal - subtotalComDesconto;
 
   return (
     <Sheet>
@@ -99,7 +80,12 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
                         </button>
                       </div>
 
-                      <div className="text-right">
+                      <div className="text-right flex flex-col">
+                        {item.promotionalPrice && (
+                          <span className="text-xs text-gray-400 line-through">
+                            {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.price)}
+                          </span>
+                        )}
                         <span className="font-bold text-green-800">
                           {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(currentPrice)}
                         </span>
@@ -114,19 +100,41 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
 
         {/* Rodapé / Checkout */}
         <SheetFooter className="p-6 bg-white border-t border-gray-100 flex-col gap-4">
-          <div className="flex justify-between items-center w-full mb-2">
-            <span className="text-gray-600 font-medium">Subtotal</span>
-            <span className="text-2xl font-bold text-gray-900">
-              {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotal)}
-            </span>
+          <div className="flex flex-col w-full gap-2 mb-2">
+            <div className="flex justify-between items-center text-sm text-gray-500">
+              <span>Subtotal</span>
+              <span className="line-through">
+                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotalOriginal)}
+              </span>
+            </div>
+            
+            {totalDesconto > 0 && (
+              <div className="flex justify-between items-center text-sm text-amber-600 font-medium">
+                <span>Desconto aplicado</span>
+                <span>
+                  - {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalDesconto)}
+                </span>
+              </div>
+            )}
+            
+            <div className="flex justify-between items-center w-full mt-2 pt-2 border-t border-gray-100">
+              <span className="text-gray-900 font-bold">Total</span>
+              <span className="text-2xl font-bold text-green-800">
+                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(subtotalComDesconto)}
+              </span>
+            </div>
           </div>
           
-          <Button className="w-full py-6 text-lg rounded-xl shadow-md">
-            Finalizar Pedido via WhatsApp
-          </Button>
+          <SheetClose asChild>
+            <Link href="/cart" className="w-full">
+              <Button className="w-full py-6 text-lg rounded-xl shadow-md">
+                Ver Carrinho
+              </Button>
+            </Link>
+          </SheetClose>
           
           <p className="text-xs text-center text-gray-500 mt-2">
-            O frete será calculado com o vendedor
+            Taxas e frete calculados no Carrinho
           </p>
         </SheetFooter>
       </SheetContent>

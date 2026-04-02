@@ -4,6 +4,7 @@ import CategoryCard from "@/components/category/CategoryCard";
 import FeaturedSection from "@/components/home/FeaturedSection";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
+import { FaWhatsapp } from "react-icons/fa6";
 
 export default async function Home() {
   const categories = await getCategories();
@@ -50,11 +51,12 @@ export default async function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/5551999999999"
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5551999999999'}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-xl font-medium bg-white text-green-800 hover:bg-green-50 transition-colors shadow-lg"
+              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-xl font-medium bg-white text-green-800 hover:bg-green-50 transition-colors shadow-lg"
             >
+              <FaWhatsapp className="w-6 h-6 text-green-600" />
               Pedir pelo WhatsApp
             </a>
           </div>
