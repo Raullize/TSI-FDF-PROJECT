@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShoppingCart, X, Trash2, Plus, Minus } from 'lucide-react';
+import { ShoppingCart, Trash2, Plus, Minus } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/sheet';
 import Button from '../ui/Button';
 
-// Mock data para visualização inicial
 const MOCK_CART_ITEMS = [
   {
     id: 101,
@@ -43,7 +42,6 @@ const MOCK_CART_ITEMS = [
 ];
 
 export default function CartSidebar({ children }: { children: React.ReactNode }) {
-  // Calcular totais baseados nos mocks
   const subtotal = MOCK_CART_ITEMS.reduce((acc, item) => {
     const itemPrice = item.promotionalPrice || item.price;
     return acc + (itemPrice * item.quantity);
