@@ -26,13 +26,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {product.isBestSeller && (
-          <div className="absolute top-3 left-3 bg-green-700 text-green-50 text-xs font-bold px-2 py-1 rounded-lg shadow-sm">
-            Mais Vendidos
+          <div className="absolute top-3 left-3 bg-amber-100/90 backdrop-blur-sm border border-amber-200 text-amber-900 text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+            Mais Vendido
           </div>
         )}
         
         {discountPercentage > 0 && (
-          <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-lg shadow-sm">
+          <div className="absolute top-3 right-3 bg-red-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
             -{discountPercentage}%
           </div>
         )}
@@ -41,19 +41,22 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="p-4 flex flex-col grow">
         <div className="grow">
           {/* Preços */}
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-lg font-medium text-gray-900">
+          <div className="flex items-baseline gap-1.5 mb-2">
+            <span className="text-xl font-bold text-gray-900">
               {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.promotionalPrice || product.price)}
             </span>
+            <span className="text-xs text-gray-500 font-medium">
+              / {product.unit}
+            </span>
             {product.promotionalPrice && (
-              <span className="text-sm text-gray-400 line-through">
+              <span className="text-sm text-gray-400 line-through ml-1">
                 {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}
               </span>
             )}
           </div>
 
           {/* Título */}
-          <h3 className="font-medium text-lg text-gray-900 mb-1 group-hover:text-amber-900 transition-colors">
+          <h3 className="font-medium text-lg text-gray-900 mb-1 group-hover:text-amber-900 transition-colors line-clamp-1">
             {product.name}
           </h3>
 
@@ -65,8 +68,8 @@ export default function ProductCard({ product }: ProductCardProps) {
                   key={i}
                   className={`w-4 h-4 ${
                     i < rating 
-                      ? 'fill-gray-900 text-gray-900' 
-                      : 'text-gray-300'
+                      ? 'fill-amber-400 text-amber-400' 
+                      : 'text-gray-200'
                   }`}
                 />
               ))}
@@ -76,12 +79,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           </div>
 
-          {/* Descrição e Unidade */}
-          <p className="text-sm text-gray-500 line-clamp-1 mb-2">
+          {/* Descrição */}
+          <p className="text-sm text-gray-500 line-clamp-2 mb-4">
             {product.description}
-          </p>
-          <p className="text-xs font-medium text-amber-700 bg-amber-50 inline-block px-2 py-1 rounded-md mb-2">
-            {product.unit}
           </p>
         </div>
         
