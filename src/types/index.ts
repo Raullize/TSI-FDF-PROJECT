@@ -5,6 +5,8 @@ export interface Category {
   image: string;
 }
 
+export type ProductUnit = '100g' | '1kg' | 'pacote' | 'unidade' | 'kit';
+
 export interface Product {
   id: number;
   categoryId: number;
@@ -14,7 +16,7 @@ export interface Product {
   promotionalPrice?: number;
   rating?: number;
   reviewCount?: number;
-  unit: string;
+  unit: ProductUnit;
   isBestSeller: boolean;
   image: string;
   stock: number;
