@@ -19,12 +19,12 @@ export default function Hero() {
           <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-lg">
             Dê um giro na sua vida com os produtos naturais do Armazém Girassol. Qualidade, frescor e carinho em cada grão.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-[#FDBA24] text-amber-950 font-bold text-lg px-8 py-3.5 rounded-full shadow-lg hover:bg-yellow-400 transition-colors w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-[#FDBA24] text-amber-950 font-bold text-base px-7 py-3 rounded-full shadow-md hover:bg-yellow-400 hover:shadow-lg transition-all w-full sm:w-auto">
               Ver Produtos
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/about" className="inline-flex items-center justify-center bg-[#FFFDF4] text-amber-950 font-bold text-lg px-8 py-3.5 rounded-full border border-amber-200/50 shadow-md hover:bg-white transition-colors w-full sm:w-auto">
+            <Link href="/about" className="inline-flex items-center justify-center bg-[#FFFDF4] text-amber-950 font-bold text-base px-7 py-3 rounded-full border border-amber-200/50 shadow-sm hover:bg-white hover:shadow-md transition-all w-full sm:w-auto">
               Conheça a loja
             </Link>
           </div>

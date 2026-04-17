@@ -16,11 +16,11 @@ export default async function Home() {
 
       <Section className="bg-transparent">
         <Container>
-          <div className="text-center mb-12">
-            <span className="text-[#2E8B57] font-bold tracking-wider uppercase text-sm mb-3 block">
+          <div className="flex flex-col items-center text-center mb-14 max-w-2xl mx-auto">
+            <span className="text-[#2E8B57] font-bold tracking-wider uppercase text-sm mb-3">
               Categorias
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-amber-950 font-serif">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-950 font-serif leading-tight">
               Tudo o que a natureza tem de bom.
             </h2>
           </div>
