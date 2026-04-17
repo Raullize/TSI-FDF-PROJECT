@@ -77,7 +77,7 @@ export default function FeaturedSection({
           <div className="flex items-center gap-4">
             <div className="hidden md:flex gap-2">
               <button
-                className="w-10 h-10 rounded-full bg-white border border-amber-200 flex items-center justify-center text-amber-900 hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-amber-950 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 onClick={scrollPrev}
                 disabled={prevBtnDisabled}
                 aria-label="Anterior"
@@ -85,7 +85,7 @@ export default function FeaturedSection({
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
-                className="w-10 h-10 rounded-full bg-white border border-amber-200 flex items-center justify-center text-amber-900 hover:bg-amber-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-amber-950 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 onClick={scrollNext}
                 disabled={nextBtnDisabled}
                 aria-label="Próximo"

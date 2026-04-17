@@ -22,7 +22,7 @@ export default function CartPage() {
   const totalFinal = subtotalComDesconto + frete;
 
   return (
-    <div className="py-8 md:py-12 bg-[#FCF8E3] min-h-screen">
+    <div className="py-8 md:py-12 bg-[#FCF9EE] min-h-screen">
       <Container>
         <div className="mb-8">
           <Link href="/" className="inline-flex items-center text-sm text-gray-500 hover:text-amber-950 transition-colors">

@@ -34,7 +34,7 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
         {children}
       </SheetTrigger>
       
-      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l border-black/5 bg-[#FCF8E3]">
+      <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l border-black/5 bg-[#FCF9EE]">
         <SheetHeader className="p-6 border-b border-black/5 bg-[#FFFDF4]">
           <SheetTitle className="flex items-center gap-2 text-amber-950 font-serif text-2xl">
             <ShoppingCart className="w-6 h-6" />
