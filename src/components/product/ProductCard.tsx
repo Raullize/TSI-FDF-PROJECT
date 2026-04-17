@@ -26,13 +26,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {product.isBestSeller && (
-          <div className="absolute top-3 left-3 bg-amber-100/90 backdrop-blur-sm border border-amber-200 text-amber-900 text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+          <div className="absolute top-3 left-3 bg-[#FDBA24] text-amber-950 text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1">
+            <Star className="w-2.5 h-2.5 fill-amber-950" />
             Mais Vendido
           </div>
         )}
         
         {discountPercentage > 0 && (
-          <div className="absolute top-3 right-3 bg-red-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+          <div className="absolute top-3 right-3 bg-[#2E8B57] text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full shadow-sm">
             -{discountPercentage}%
           </div>
         )}

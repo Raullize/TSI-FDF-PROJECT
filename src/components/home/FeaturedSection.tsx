@@ -7,7 +7,7 @@ import ProductCard from '../product/ProductCard';
 import { Product } from '@/types';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
 
 interface FeaturedSectionProps {
   title: string;
@@ -65,8 +65,14 @@ export default function FeaturedSection({
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div>
-            <h2 className="text-3xl font-bold text-amber-900 font-serif mb-2">{title}</h2>
-            {subtitle && <p className="text-gray-600">{subtitle}</p>}
+            {subtitle && (
+              <span className="text-[#2E8B57] font-bold tracking-wider uppercase text-sm mb-2 block">
+                {subtitle}
+              </span>
+            )}
+            <h2 className="text-3xl md:text-4xl font-bold text-amber-950 font-serif">
+              {title}
+            </h2>
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex gap-2">
@@ -88,9 +94,9 @@ export default function FeaturedSection({
               </button>
             </div>
 
-            <Link href={viewAllLink} className="text-green-700 font-medium hover:text-green-800 flex items-center gap-1 whitespace-nowrap">
+            <Link href={viewAllLink} className="text-amber-950 font-bold text-base hover:underline underline-offset-4 decoration-2 decoration-amber-950 flex items-center gap-1 whitespace-nowrap">
               Ver tudo
-              <ArrowRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </Link>
           </div>
         </div>

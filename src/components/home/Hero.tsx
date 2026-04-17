@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Container from '../ui/Container';
-import Button from '../ui/Button';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -20,15 +20,12 @@ export default function Hero() {
             Dê um giro na sua vida com os produtos naturais do Armazém Girassol. Qualidade, frescor e carinho em cada grão.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/products">
-              <Button size="lg" className="w-full sm:w-auto shadow-xl shadow-yellow-200/50">
-                Ver Produtos
-              </Button>
+            <Link href="/products" className="inline-flex items-center justify-center gap-2 bg-[#FDBA24] text-amber-950 font-bold text-lg px-8 py-3.5 rounded-full shadow-lg hover:bg-yellow-400 transition-colors w-full sm:w-auto">
+              Ver Produtos
+              <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/about">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto bg-white/50 backdrop-blur-sm border-amber-900/30 hover:bg-white/80">
-                Conheça Nossa História
-              </Button>
+            <Link href="/about" className="inline-flex items-center justify-center bg-[#FFFDF4] text-amber-950 font-bold text-lg px-8 py-3.5 rounded-full border border-amber-200/50 shadow-md hover:bg-white transition-colors w-full sm:w-auto">
+              Conheça a loja
             </Link>
           </div>
         </div>

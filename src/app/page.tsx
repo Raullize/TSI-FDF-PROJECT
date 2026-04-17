@@ -16,11 +16,13 @@ export default async function Home() {
 
       <Section className="bg-transparent">
         <Container>
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-amber-900 font-serif mb-2">
-              Nossas Categorias
+          <div className="text-center mb-12">
+            <span className="text-[#2E8B57] font-bold tracking-wider uppercase text-sm mb-3 block">
+              Categorias
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-amber-950 font-serif">
+              Tudo o que a natureza tem de bom.
             </h2>
-            <p className="text-gray-600">Explore nossa variedade de produtos naturais</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-10 justify-items-center">
