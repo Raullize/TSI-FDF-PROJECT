@@ -14,7 +14,7 @@ export default async function Home() {
     <>
       <Hero />
 
-      <Section className="bg-white">
+      <Section className="bg-transparent">
         <Container>
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-amber-900 font-serif mb-2">
@@ -31,13 +31,13 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {featuredCollections.map((collection, index) => (
+      {featuredCollections.map((collection) => (
         <FeaturedSection
           key={collection.id}
           title={collection.title}
           subtitle={collection.subtitle}
           products={collection.products}
-          bgColor={index % 2 === 0 ? 'bg-amber-50' : 'bg-white'}
+          bgColor="bg-transparent"
         />
       ))}
 

@@ -21,7 +21,7 @@ export default function FeaturedSection({
   title,
   subtitle,
   products,
-  bgColor = 'bg-white',
+  bgColor = 'bg-transparent',
   viewAllLink = '/products'
 }: FeaturedSectionProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({

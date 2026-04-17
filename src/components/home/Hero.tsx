@@ -5,7 +5,7 @@ import Button from '../ui/Button';
 
 export default function Hero() {
   return (
-    <section className="relative bg-amber-50 overflow-hidden">
+    <section className="relative bg-transparent overflow-hidden">
       {/* Background Image Placeholder */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="w-full h-full bg-[url('/images/banners/sunflowers.webp')] bg-cover bg-center" />
