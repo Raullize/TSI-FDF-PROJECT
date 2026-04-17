@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative bg-transparent overflow-hidden">
+    <div className="relative bg-transparent overflow-hidden">
       {/* Background Image Placeholder */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="w-full h-full bg-[url('/images/banners/sunflowers.webp')] bg-cover bg-center" />
@@ -30,6 +30,6 @@ export default function Hero() {
           </div>
         </div>
       </Container>
-    </section>
+    </div>
   );
 }
