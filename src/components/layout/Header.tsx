@@ -7,7 +7,7 @@ import CartSidebar from '../cart/CartSidebar';
 
 export default function Header() {
   return (
-    <header className="bg-[#FCF8E3]/80 backdrop-blur-md sticky top-0 z-50">
+    <header className="bg-[#FCF9EE] z-50">
       <Container>
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}

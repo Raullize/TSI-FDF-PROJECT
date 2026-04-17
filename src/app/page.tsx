@@ -32,13 +32,13 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {featuredCollections.map((collection, index) => (
+      {featuredCollections.map((collection) => (
         <FeaturedSection
           key={collection.id}
           title={collection.title}
           subtitle={collection.subtitle}
           products={collection.products}
-          bgColor={index % 2 === 0 ? "bg-transparent" : "bg-[#FCF9EE]"}
+          bgColor="bg-[#FCF9EE]"
         />
       ))}
     </>
