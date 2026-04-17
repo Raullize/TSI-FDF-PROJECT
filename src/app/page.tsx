@@ -4,7 +4,6 @@ import CategoryCard from "@/components/category/CategoryCard";
 import FeaturedSection from "@/components/home/FeaturedSection";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
-import { FaWhatsapp } from "react-icons/fa6";
 
 export default async function Home() {
   const categories = await getCategories();
@@ -42,28 +41,6 @@ export default async function Home() {
           bgColor={index % 2 === 0 ? "bg-transparent" : "bg-[#FCF9EE]"}
         />
       ))}
-
-      <Section className="bg-green-700 text-white text-center">
-        <Container>
-          <h2 className="text-3xl md:text-4xl font-bold font-serif mb-6">
-            Pronto para uma vida mais saudável?
-          </h2>
-          <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
-            Visite nossa loja física ou faça seu pedido online e receba no conforto da sua casa.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5551999999999'}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-xl font-medium bg-white text-green-800 hover:bg-green-50 transition-colors shadow-lg"
-            >
-              <FaWhatsapp className="w-6 h-6 text-green-600" />
-              Pedir pelo WhatsApp
-            </a>
-          </div>
-        </Container>
-      </Section>
     </>
   );
 }
