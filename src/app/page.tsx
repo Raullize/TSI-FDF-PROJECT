@@ -27,8 +27,8 @@ export default async function Home() {
               </h2>
             </div>
             
-            <Link href="/categories" className="text-amber-950 font-bold text-base hover:underline underline-offset-4 decoration-2 decoration-amber-950 flex items-center gap-1 whitespace-nowrap">
-              Ver todas
+            <Link href="/products" className="text-amber-950 font-bold text-base hover:underline underline-offset-4 decoration-2 decoration-amber-950 flex items-center gap-1 whitespace-nowrap">
+              Ver tudo
               <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
             </Link>
           </div>
