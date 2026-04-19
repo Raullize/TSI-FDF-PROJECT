@@ -10,7 +10,7 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ category }: CategoryCardProps) {
   return (
-    <Link href={`/products?category=${category.slug}`} className="group block w-full relative aspect-[3/4] sm:aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+    <Link href={`/products?category=${category.slug}`} className="group block w-full relative aspect-3/4 sm:aspect-square md:aspect-4/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
       <Image
         src="/images/products/noImage.png"
         alt={category.name}
@@ -20,7 +20,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       />
       
       {/* Degradê Escuro (Bottom to Top) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500" />
       
       {/* Conteúdo (Título e Link Explorar) */}
       <div className="absolute bottom-0 left-0 w-full p-5 md:p-6 flex flex-col justify-end">
