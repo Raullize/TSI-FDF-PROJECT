@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Container from '../ui/Container';
-import Button from '../ui/Button';
 import { Flower2, ShoppingCart } from 'lucide-react';
 import CartSidebar from '../cart/CartSidebar';
 
@@ -45,12 +44,6 @@ export default function Header() {
                 <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-green-600 rounded-full border-2 border-white group-hover:scale-110 transition-transform"></span>
               </button>
             </CartSidebar>
-
-            <div className="hidden md:block">
-              <Button size="sm" variant="secondary">
-                Ver Produtos
-              </Button>
-            </div>
           </div>
         </div>
       </Container>
