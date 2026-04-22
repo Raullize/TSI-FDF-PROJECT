@@ -1,5 +1,6 @@
 import { getCategories, getFeaturedCollections } from "@/lib/data";
 import Hero from "@/components/home/Hero";
+import FeaturesSection from "@/components/home/FeaturesSection";
 import CategoryCard from "@/components/category/CategoryCard";
 import FeaturedSection from "@/components/home/FeaturedSection";
 import Container from "@/components/ui/Container";
@@ -14,6 +15,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      <FeaturesSection />
 
       <Section className="bg-[#FCF9EE]">
         <Container>
