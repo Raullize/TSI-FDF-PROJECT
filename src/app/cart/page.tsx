@@ -6,8 +6,14 @@ import { FaWhatsapp } from 'react-icons/fa6';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { MOCK_CART_ITEMS } from '@/components/cart/mock';
+import FeaturesSection from '@/components/home/FeaturesSection';
+import FeaturedSection from '@/components/home/FeaturedSection';
+import { getFeaturedCollections } from '@/lib/data';
 
-export default function CartPage() {
+export default async function CartPage() {
+  const featuredCollections = await getFeaturedCollections();
+  const recommendations = featuredCollections.length > 0 ? featuredCollections[0] : null;
+
   const subtotalOriginal = MOCK_CART_ITEMS.reduce((acc, item) => {
     return acc + (item.price * item.quantity);
   }, 0);
@@ -22,17 +28,21 @@ export default function CartPage() {
   const totalFinal = subtotalComDesconto + frete;
 
   return (
-    <div className="py-8 md:py-12 bg-[#FCF9EE] min-h-screen">
-      <Container>
-        <div className="mb-8">
-          <Link href="/" className="inline-flex items-center text-sm text-gray-500 hover:text-amber-950 transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-1" />
-            Continuar comprando
-          </Link>
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-amber-950 mt-4">
-            Seu Carrinho
-          </h1>
-        </div>
+    <div className="bg-[#FCF9EE] min-h-screen flex flex-col">
+      {/* Features Cards no topo */}
+      <FeaturesSection />
+      
+      <div className="py-8 md:py-12 grow">
+        <Container>
+          <div className="mb-8">
+            <Link href="/" className="inline-flex items-center text-sm text-gray-500 hover:text-amber-950 transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-1" />
+              Continuar comprando
+            </Link>
+            <h1 className="text-3xl md:text-4xl font-serif font-bold text-amber-950 mt-4">
+              Seu Carrinho
+            </h1>
+          </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Coluna da Esquerda: Lista de Produtos */}
@@ -141,25 +151,39 @@ export default function CartPage() {
                   </span>
                 </div>
                 
-                <div className="border-t border-black/5 mt-3 pt-3 flex justify-between items-end">
-                  <span className="font-bold text-amber-950 text-lg">Total</span>
-                  <div className="text-right">
-                    <span className="text-3xl font-bold text-amber-950 block">
-                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalFinal)}
-                    </span>
-                    <span className="text-xs text-gray-500 font-normal">Em até 3x sem juros</span>
-                  </div>
+              <div className="border-t border-black/5 mt-3 pt-3 flex justify-between items-end">
+                <span className="font-bold text-amber-950 text-lg">Total</span>
+                <div className="text-right">
+                  <span className="text-3xl font-bold text-amber-950 block">
+                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalFinal)}
+                  </span>
                 </div>
               </div>
-
+            </div>
+            
+            <div className="mt-6">
               <Button className="w-full py-6 text-lg rounded-full shadow-md bg-[#2E8B57] hover:bg-green-700 text-white flex items-center justify-center gap-2 border-none">
                 <FaWhatsapp className="w-5 h-5" />
                 Finalizar no WhatsApp
               </Button>
             </div>
           </div>
+          </div>
         </div>
       </Container>
+
+      {recommendations && (
+        <div className="mt-12 md:mt-24">
+          <FeaturedSection
+            title="Recomendações para você"
+            subtitle="Você também pode gostar"
+            products={recommendations.products}
+            bgColor="bg-[#FCF9EE]"
+            viewAllLink="/products"
+          />
+        </div>
+      )}
+      </div>
     </div>
   );
 }
