@@ -28,7 +28,7 @@ export default async function CartPage() {
   const totalFinal = subtotalComDesconto + frete;
 
   return (
-    <div className="bg-[#FCF9EE] min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Features Cards no topo */}
       <FeaturesSection />
       
@@ -178,7 +178,6 @@ export default async function CartPage() {
             title="Recomendações para você"
             subtitle="Você também pode gostar"
             products={recommendations.products}
-            bgColor="bg-[#FCF9EE]"
             viewAllLink="/products"
           />
         </div>

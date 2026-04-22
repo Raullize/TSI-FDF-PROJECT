@@ -17,7 +17,7 @@ export default async function Home() {
       <Hero />
       <FeaturesSection />
 
-      <Section className="bg-[#FCF9EE]">
+      <Section className="bg-transparent">
         <Container>
           <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
             <div>
@@ -49,7 +49,7 @@ export default async function Home() {
           title={collection.title}
           subtitle={collection.subtitle}
           products={collection.products}
-          bgColor="bg-[#FCF9EE]"
+          bgColor="bg-transparent"
         />
       ))}
     </>

@@ -33,7 +33,7 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <div className="bg-[#FCF9EE] py-8">
+    <div className="bg-transparent py-8 relative">
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 gap-y-8 justify-items-center">
           {features.map((feature, index) => {
