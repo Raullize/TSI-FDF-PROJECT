@@ -1,13 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Container from '../ui/Container';
-import { Mail, Phone, Flower2, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, Flower2 } from 'lucide-react';
 import { FaInstagram, FaWhatsapp, FaFacebookF, FaYoutube, FaCcVisa, FaCcMastercard, FaBarcode } from 'react-icons/fa';
 import { FaPix } from 'react-icons/fa6';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="w-full mt-auto flex flex-col">
       {/* Newsletter Section */}
