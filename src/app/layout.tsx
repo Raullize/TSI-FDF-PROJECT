@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-[#FFFDF4] via-[#FCF9EE] to-[#F5EED8] text-gray-800 min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-linear-to-br from-[#FFFDF4] via-[#FCF9EE] to-[#F5EED8] text-gray-800 min-h-screen flex flex-col`}
       >
         <Header />
         <main className="grow">

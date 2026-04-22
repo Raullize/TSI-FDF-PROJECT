@@ -41,7 +41,7 @@ export default function FeaturesSection() {
             const isLucide = feature.icon !== FaPix;
             return (
               <div key={index} className="flex items-center gap-4 w-full max-w-[220px]">
-                <div className="flex-shrink-0">
+                <div className="shrink-0">
                   <Icon className="w-10 h-10 text-[#2E8B57]" {...(isLucide ? { strokeWidth: 1.5 } : {})} />
                 </div>
                 <div className="flex flex-col">

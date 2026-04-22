@@ -45,9 +45,11 @@ export default function Footer() {
         </Container>
       </div>
 
-      {/* Main Footer Content */}
-      <div className="bg-white py-12 md:py-16">
-        <Container>
+      {/* Main Footer Content Wrapper */}
+      <div className="bg-[#FCF9EE]/90 backdrop-blur-sm">
+        {/* Main Footer Content */}
+        <div className="py-12 md:py-16">
+          <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             
             {/* Col 1: Brand & Social */}
@@ -136,7 +138,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-gray-50 py-6 border-t border-gray-200 text-xs text-gray-500 text-center">
+      <div className="py-6 border-t border-black/5 text-xs text-gray-500 text-center">
         <Container>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-left md:text-left max-w-3xl leading-relaxed font-semibold">
@@ -150,6 +152,7 @@ export default function Footer() {
           </div>
         </Container>
       </div>
+    </div>
     </footer>
   );
 }
