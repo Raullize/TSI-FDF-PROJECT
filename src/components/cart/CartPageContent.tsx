@@ -91,7 +91,7 @@ export default function CartPageContent() {
                       </div>
                       <button 
                         onClick={() => removeFromCart(item.id)}
-                        className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                        className="text-gray-400 hover:text-red-500 transition-colors p-1 cursor-pointer"
                       >
                         <Trash2 className="w-5 h-5" />
                       </button>
@@ -101,14 +101,14 @@ export default function CartPageContent() {
                       <div className="flex items-center gap-3 bg-white border border-black/10 rounded-lg p-1">
                         <button 
                           onClick={() => updateQuantity(item.id, -1)}
-                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors cursor-pointer"
                         >
                           <Minus className="w-4 h-4" />
                         </button>
                         <span className="text-sm font-medium w-6 text-center text-amber-950">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.id, 1)}
-                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors cursor-pointer"
                         >
                           <Plus className="w-4 h-4" />
                         </button>

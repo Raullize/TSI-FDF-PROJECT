@@ -42,7 +42,7 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
             <ShoppingCart className="w-6 h-6 text-[#FDBA24]" />
             Seu Carrinho
           </SheetTitle>
-          <SheetClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white">
+          <SheetClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             <span className="sr-only">Close</span>
           </SheetClose>
@@ -73,13 +73,6 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
                 
                 return (
                 <div key={item.id} className="flex gap-4 bg-[#FFFDF4] p-3 rounded-2xl border border-black/5 shadow-sm relative group">
-                  <button 
-                    onClick={() => removeFromCart(item.id)}
-                    className="absolute -top-2 -right-2 bg-[#FFFDF4] border border-black/10 rounded-full p-1.5 text-gray-400 hover:text-red-500 hover:border-red-200 transition-colors shadow-sm opacity-0 group-hover:opacity-100"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-
                   <div className="relative w-20 h-20 bg-white rounded-xl overflow-hidden shrink-0 border border-black/5">
                     <Image
                       src={item.image}
@@ -91,23 +84,31 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
                   </div>
 
                   <div className="flex flex-col grow justify-between">
-                    <div>
-                      <h4 className="font-medium text-amber-950 line-clamp-1 pr-4">{item.name}</h4>
-                      <p className="text-xs text-gray-500">{item.unit}</p>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h4 className="font-medium text-amber-950 line-clamp-1 pr-4">{item.name}</h4>
+                        <p className="text-xs text-gray-500">{item.unit}</p>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-gray-400 hover:text-red-500 transition-colors p-1 cursor-pointer"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
 
                     <div className="flex items-end justify-between mt-2">
                       <div className="flex items-center gap-2 bg-white border border-black/10 rounded-lg">
                         <button 
                           onClick={() => updateQuantity(item.id, -1)}
-                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors cursor-pointer"
                         >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
                         <span className="text-sm font-medium w-4 text-center text-amber-950">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.id, 1)}
-                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
                         </button>
