@@ -17,11 +17,15 @@ import { Button } from '../ui/Button';
 import { MOCK_CART_ITEMS } from './mock';
 
 export default function CartSidebar({ children }: { children: React.ReactNode }) {
-  const subtotalOriginal = MOCK_CART_ITEMS.reduce((acc, item) => {
+  // Para testar o carrinho vazio, basta comentar o MOCK_CART_ITEMS e deixar o array vazio []
+  // const cartItems = MOCK_CART_ITEMS;
+  const cartItems: typeof MOCK_CART_ITEMS = [];
+
+  const subtotalOriginal = cartItems.reduce((acc, item) => {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const subtotalComDesconto = MOCK_CART_ITEMS.reduce((acc, item) => {
+  const subtotalComDesconto = cartItems.reduce((acc, item) => {
     const itemPrice = item.promotionalPrice || item.price;
     return acc + (itemPrice * item.quantity);
   }, 0);
@@ -48,11 +52,29 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
 
         {/* Lista de Produtos */}
         <div className="flex-1 overflow-y-auto p-6">
-          <div className="flex flex-col gap-4">
-            {MOCK_CART_ITEMS.map((item) => {
-              const currentPrice = item.promotionalPrice || item.price;
-              
-              return (
+          {cartItems.length === 0 ? (
+            <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
+              <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-2">
+                <ShoppingCart className="w-12 h-12 text-[#2E8B57] opacity-60" />
+              </div>
+              <h3 className="text-2xl font-serif font-bold text-amber-950">Carrinho vazio</h3>
+              <p className="text-gray-500 text-sm max-w-[250px]">
+                Que tal adicionar alguns dos nossos produtos naturais e saudáveis?
+              </p>
+              <SheetClose asChild>
+                <Link href="/products" className="mt-4 w-full">
+                  <Button className="w-full py-6 text-base rounded-full bg-[#2E8B57] hover:bg-green-700 text-white font-bold shadow-md hover:shadow-lg transition-all border-none">
+                    Ver produtos
+                  </Button>
+                </Link>
+              </SheetClose>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {cartItems.map((item) => {
+                const currentPrice = item.promotionalPrice || item.price;
+                
+                return (
                 <div key={item.id} className="flex gap-4 bg-[#FFFDF4] p-3 rounded-2xl border border-black/5 shadow-sm relative group">
                   <button className="absolute -top-2 -right-2 bg-[#FFFDF4] border border-black/10 rounded-full p-1.5 text-gray-400 hover:text-red-500 hover:border-red-200 transition-colors shadow-sm opacity-0 group-hover:opacity-100">
                     <Trash2 className="w-3.5 h-3.5" />
@@ -101,11 +123,13 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
               );
             })}
           </div>
+          )}
         </div>
 
         {/* Rodapé / Checkout */}
-        <SheetFooter className="p-6 bg-[#FFFDF4] border-t border-black/5 flex-col gap-4">
-          <div className="flex flex-col w-full gap-3 mb-2">
+        {cartItems.length > 0 && (
+          <SheetFooter className="p-6 bg-[#FFFDF4] border-t border-black/5 flex-col gap-4">
+            <div className="flex flex-col w-full gap-3 mb-2">
             <div className="flex justify-between items-center text-sm text-gray-600">
               <span>Subtotal</span>
               <span className={`font-medium ${totalDesconto > 0 ? 'line-through text-gray-400' : 'text-gray-900'}`}>
@@ -141,7 +165,8 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
           <p className="text-xs text-center text-gray-500 mt-2">
             Taxas e frete calculados no Carrinho
           </p>
-        </SheetFooter>
+          </SheetFooter>
+        )}
       </SheetContent>
     </Sheet>
   );

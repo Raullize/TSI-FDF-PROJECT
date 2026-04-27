@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Trash2, Plus, Minus, MapPin, ArrowLeft } from 'lucide-react';
+import { Trash2, Plus, Minus, MapPin, ArrowLeft, ShoppingCart } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa6';
 import Container from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -14,11 +14,15 @@ export default async function CartPage() {
   const featuredCollections = await getFeaturedCollections();
   const recommendations = featuredCollections.length > 0 ? featuredCollections[0] : null;
 
-  const subtotalOriginal = MOCK_CART_ITEMS.reduce((acc, item) => {
+  // Para testar o carrinho vazio, basta comentar o MOCK_CART_ITEMS e deixar o array vazio []
+  // const cartItems = MOCK_CART_ITEMS;
+  const cartItems: typeof MOCK_CART_ITEMS = [];
+
+  const subtotalOriginal = cartItems.reduce((acc, item) => {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const subtotalComDesconto = MOCK_CART_ITEMS.reduce((acc, item) => {
+  const subtotalComDesconto = cartItems.reduce((acc, item) => {
     const itemPrice = item.promotionalPrice || item.price;
     return acc + (itemPrice * item.quantity);
   }, 0);
@@ -44,14 +48,30 @@ export default async function CartPage() {
             </h1>
           </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Coluna da Esquerda: Lista de Produtos */}
-          <div className="w-full lg:w-2/3 flex flex-col gap-4">
-            <div className="bg-[#FFFDF4] rounded-2xl shadow-sm border border-black/5 p-4 md:p-6">
-              {MOCK_CART_ITEMS.map((item) => {
-                const currentPrice = item.promotionalPrice || item.price;
-                
-                return (
+        {cartItems.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center bg-[#FFFDF4] rounded-3xl border border-black/5 shadow-sm">
+            <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-6">
+              <ShoppingCart className="w-12 h-12 text-[#2E8B57] opacity-60" />
+            </div>
+            <h2 className="text-3xl font-serif font-bold text-amber-950 mb-4">Seu carrinho está vazio</h2>
+            <p className="text-gray-600 max-w-md mx-auto mb-8 text-lg">
+              Parece que você ainda não escolheu nenhum produto. Que tal explorar nossa variedade de itens naturais?
+            </p>
+            <Link href="/products">
+              <Button className="py-6 px-10 text-lg rounded-full shadow-md bg-[#2E8B57] hover:bg-green-700 text-white font-bold transition-all border-none">
+                Ver Produtos
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Coluna da Esquerda: Lista de Produtos */}
+            <div className="w-full lg:w-2/3 flex flex-col gap-4">
+              <div className="bg-[#FFFDF4] rounded-2xl shadow-sm border border-black/5 p-4 md:p-6">
+                {cartItems.map((item) => {
+                  const currentPrice = item.promotionalPrice || item.price;
+                  
+                  return (
                   <div key={item.id} className="flex gap-4 py-4 border-b border-black/5 last:border-0 last:pb-0 first:pt-0 relative group">
                     <div className="relative w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-xl overflow-hidden shrink-0 border border-black/5">
                       <Image
@@ -168,9 +188,10 @@ export default async function CartPage() {
               </Button>
             </div>
           </div>
-          </div>
         </div>
-      </Container>
+      </div>
+      )}
+    </Container>
 
       {recommendations && (
         <div className="mt-12 md:mt-24">
