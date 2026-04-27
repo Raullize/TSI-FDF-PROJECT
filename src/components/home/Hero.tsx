@@ -7,8 +7,11 @@ export default function Hero() {
   return (
     <div className="relative bg-transparent overflow-hidden">
       {/* Background Image Placeholder */}
-      <div className="absolute inset-0 z-0 opacity-25">
-        <div className="w-full h-full bg-[url('/images/banners/hero-store.jpg')] bg-cover bg-center" />
+      <div className="absolute inset-0 z-0">
+        {/* Camada 1: imagem de fundo */}
+        <div className="absolute inset-0 w-full h-full bg-[url('/images/banners/hero-store.jpg')] bg-cover bg-center object-cover" />
+        {/* Camada 2: gradiente sobreposto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FCF9EE]/95 via-[#FCF9EE]/70 to-[#FCF9EE]/20" />
       </div>
 
       <Container className="relative z-10 py-20 md:py-32 lg:py-40">
