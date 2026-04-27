@@ -58,7 +58,7 @@ export default function Footer() {
                 <Flower2 className="w-8 h-8 text-[#2E8B57]" />
                 <div className="flex flex-col leading-none">
                   <span className="text-2xl font-bold text-[#2E8B57] font-serif">Armazém</span>
-                  <span className="text-sm font-bold text-amber-500 tracking-[0.2em] uppercase">Girassol</span>
+                  <span className="text-1xl font-bold text-amber-500 tracking-[0.2em] font-serif">Girassol</span>
                 </div>
               </Link>
               <p className="text-sm text-gray-600 mb-6 leading-relaxed">
