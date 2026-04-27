@@ -6,7 +6,7 @@ import CartSidebar from '../cart/CartSidebar';
 
 export default function Header() {
   return (
-    <header className="bg-[#2E8B57] z-50 shadow-md">
+    <header className="bg-[#2E8B57] z-50 shadow-md border-b-4 border-[#FDBA24]">
       <Container>
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
