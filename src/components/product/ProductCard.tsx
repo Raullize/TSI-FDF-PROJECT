@@ -1,19 +1,30 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import { Product } from '@/types';
 import Button from '../ui/Button';
 import { Star } from 'lucide-react';
+import { useCart } from '../../contexts/CartContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+  const [isAdded, setIsAdded] = React.useState(false);
   const rating = product.rating || 0;
   
   const discountPercentage = product.promotionalPrice 
     ? Math.round(((product.price - product.promotionalPrice) / product.price) * 100)
     : 0;
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
   
   return (
     <div className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full">
@@ -41,7 +52,6 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <div className="p-4 flex flex-col grow">
         <div className="grow">
-          {/* Preços */}
           <div className="flex items-baseline gap-1.5 mb-2">
             <span className="text-xl font-bold text-gray-900">
               {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.promotionalPrice || product.price)}
@@ -56,12 +66,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
 
-          {/* Título */}
           <h3 className="font-medium text-lg text-gray-900 mb-1 group-hover:text-amber-900 transition-colors line-clamp-1">
             {product.name}
           </h3>
 
-          {/* Avaliações (Estrelas) */}
           <div className="flex items-center gap-1 mb-2">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
@@ -80,18 +88,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           </div>
 
-          {/* Descrição */}
           <p className="text-sm text-gray-500 line-clamp-2 mb-4">
             {product.description}
           </p>
         </div>
         
-        {/* Botão de Compra */}
         <Button 
-          variant="outline" 
-          className="w-full rounded-full border-gray-300 text-gray-900 hover:bg-gray-50 font-normal"
+          variant={isAdded ? "default" : "outline"}
+          onClick={handleAddToCart}
+          className={`w-full rounded-full font-normal transition-all duration-300 ${
+            isAdded 
+              ? "bg-[#2E8B57] text-white border-transparent hover:bg-green-700" 
+              : "border-gray-300 text-gray-900 hover:bg-gray-50"
+          }`}
         >
-          Comprar agora
+          {isAdded ? "Adicionado!" : "Comprar agora"}
         </Button>
       </div>
     </div>

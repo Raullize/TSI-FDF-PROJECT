@@ -1,10 +1,15 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Container from '../ui/Container';
 import { Flower2, ShoppingCart } from 'lucide-react';
 import CartSidebar from '../cart/CartSidebar';
+import { useCart } from '../../contexts/CartContext';
 
 export default function Header() {
+  const { cartTotalQuantity } = useCart();
+
   return (
     <header className="bg-[#2E8B57] z-50 shadow-md border-b-4 border-[#FDBA24]">
       <Container>
@@ -41,7 +46,9 @@ export default function Header() {
             <CartSidebar>
               <button className="relative text-white hover:text-[#FDBA24] p-2 rounded-full hover:bg-white/10 transition-colors group">
                 <ShoppingCart className="w-6 h-6" strokeWidth={1.5} />
-                <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-[#FDBA24] rounded-full border-2 border-[#2E8B57] group-hover:scale-110 transition-transform"></span>
+                {cartTotalQuantity > 0 && (
+                  <span className="absolute top-1 right-1 w-3 h-3 bg-[#FDBA24] rounded-full border-2 border-[#2E8B57] group-hover:scale-110 transition-transform"></span>
+                )}
               </button>
             </CartSidebar>
           </div>

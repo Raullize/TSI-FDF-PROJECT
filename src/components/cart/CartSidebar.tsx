@@ -14,18 +14,16 @@ import {
   SheetClose,
 } from '@/components/ui/sheet';
 import { Button } from '../ui/Button';
-import { MOCK_CART_ITEMS } from './mock';
+import { useCart, CartItem } from '../../contexts/CartContext';
 
 export default function CartSidebar({ children }: { children: React.ReactNode }) {
-  // Para testar o carrinho vazio, basta comentar o MOCK_CART_ITEMS e deixar o array vazio []
-  // const cartItems = MOCK_CART_ITEMS;
-  const cartItems: typeof MOCK_CART_ITEMS = [];
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
 
-  const subtotalOriginal = cartItems.reduce((acc, item) => {
+  const subtotalOriginal = cartItems.reduce((acc: number, item: CartItem) => {
     return acc + (item.price * item.quantity);
   }, 0);
 
-  const subtotalComDesconto = cartItems.reduce((acc, item) => {
+  const subtotalComDesconto = cartItems.reduce((acc: number, item: CartItem) => {
     const itemPrice = item.promotionalPrice || item.price;
     return acc + (itemPrice * item.quantity);
   }, 0);
@@ -50,7 +48,6 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
           </SheetClose>
         </SheetHeader>
 
-        {/* Lista de Produtos */}
         <div className="flex-1 overflow-y-auto p-6">
           {cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
@@ -71,12 +68,15 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
             </div>
           ) : (
             <div className="flex flex-col gap-4">
-              {cartItems.map((item) => {
+              {cartItems.map((item: CartItem) => {
                 const currentPrice = item.promotionalPrice || item.price;
                 
                 return (
                 <div key={item.id} className="flex gap-4 bg-[#FFFDF4] p-3 rounded-2xl border border-black/5 shadow-sm relative group">
-                  <button className="absolute -top-2 -right-2 bg-[#FFFDF4] border border-black/10 rounded-full p-1.5 text-gray-400 hover:text-red-500 hover:border-red-200 transition-colors shadow-sm opacity-0 group-hover:opacity-100">
+                  <button 
+                    onClick={() => removeFromCart(item.id)}
+                    className="absolute -top-2 -right-2 bg-[#FFFDF4] border border-black/10 rounded-full p-1.5 text-gray-400 hover:text-red-500 hover:border-red-200 transition-colors shadow-sm opacity-0 group-hover:opacity-100"
+                  >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
 
@@ -98,11 +98,17 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
 
                     <div className="flex items-end justify-between mt-2">
                       <div className="flex items-center gap-2 bg-white border border-black/10 rounded-lg">
-                        <button className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors">
+                        <button 
+                          onClick={() => updateQuantity(item.id, -1)}
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                        >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
                         <span className="text-sm font-medium w-4 text-center text-amber-950">{item.quantity}</span>
-                        <button className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors">
+                        <button 
+                          onClick={() => updateQuantity(item.id, 1)}
+                          className="p-1.5 text-gray-500 hover:text-amber-950 transition-colors"
+                        >
                           <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -126,7 +132,6 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
           )}
         </div>
 
-        {/* Rodapé / Checkout */}
         {cartItems.length > 0 && (
           <SheetFooter className="p-6 bg-[#FFFDF4] border-t border-black/5 flex-col gap-4">
             <div className="flex flex-col w-full gap-3 mb-2">
