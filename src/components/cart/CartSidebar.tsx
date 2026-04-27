@@ -17,7 +17,7 @@ import { Button } from '../ui/Button';
 import { useCart, CartItem } from '../../contexts/CartContext';
 
 export default function CartSidebar({ children }: { children: React.ReactNode }) {
-  const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, isCartOpen, setIsCartOpen } = useCart();
 
   const subtotalOriginal = cartItems.reduce((acc: number, item: CartItem) => {
     return acc + (item.price * item.quantity);
@@ -31,7 +31,7 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
   const totalDesconto = subtotalOriginal - subtotalComDesconto;
 
   return (
-    <Sheet>
+    <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
       <SheetTrigger asChild>
         {children}
       </SheetTrigger>

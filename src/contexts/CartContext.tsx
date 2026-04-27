@@ -20,6 +20,8 @@ interface CartContextType {
   updateQuantity: (id: string | number, delta: number) => void;
   clearCart: () => void;
   cartTotalQuantity: number;
+  isCartOpen: boolean;
+  setIsCartOpen: (isOpen: boolean) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,6 +37,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     const savedCart = localStorage.getItem('@armazem-girassol:cart');
@@ -79,6 +82,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       
       return [...prevItems, newItem];
     });
+    
+    // Abre o carrinho automaticamente
+    setIsCartOpen(true);
   };
 
   const removeFromCart = (id: string | number) => {
@@ -111,7 +117,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         removeFromCart,
         updateQuantity,
         clearCart,
-        cartTotalQuantity
+        cartTotalQuantity,
+        isCartOpen,
+        setIsCartOpen
       }}
     >
       {children}
