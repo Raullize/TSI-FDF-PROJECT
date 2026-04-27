@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Product } from '@/types';
 import Button from '../ui/Button';
-import { Star } from 'lucide-react';
+import { Star, Loader2, Check } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 
 interface ProductCardProps {
@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
-  const [isAdded, setIsAdded] = React.useState(false);
+  const [buttonState, setButtonState] = React.useState<'idle' | 'loading' | 'success'>('idle');
   const rating = product.rating || 0;
   
   const discountPercentage = product.promotionalPrice 
@@ -21,9 +21,18 @@ export default function ProductCard({ product }: ProductCardProps) {
     : 0;
 
   const handleAddToCart = () => {
-    addToCart(product);
-    setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    if (buttonState !== 'idle') return;
+    
+    setButtonState('loading');
+    
+    // Simula um delay de carregamento de 600ms para UX
+    setTimeout(() => {
+      addToCart(product);
+      setButtonState('success');
+      
+      // Volta para o estado normal após 2 segundos
+      setTimeout(() => setButtonState('idle'), 2000);
+    }, 600);
   };
   
   return (
@@ -94,15 +103,34 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         
         <Button 
-          variant={isAdded ? "default" : "outline"}
+          variant={buttonState === 'success' ? "default" : "outline"}
           onClick={handleAddToCart}
-          className={`w-full rounded-full font-normal transition-all duration-300 ${
-            isAdded 
+          disabled={buttonState === 'loading'}
+          className={`w-full rounded-full font-normal transition-all duration-300 relative overflow-hidden cursor-pointer ${
+            buttonState === 'success' 
               ? "bg-[#2E8B57] text-white border-transparent hover:bg-green-700" 
-              : "border-gray-300 text-gray-900 hover:bg-gray-50"
+              : "border-gray-300 text-gray-900 hover:bg-[#2E8B57] hover:text-white hover:border-transparent"
           }`}
         >
-          {isAdded ? "Adicionado!" : "Comprar agora"}
+          <div className="flex items-center justify-center gap-2">
+            {buttonState === 'idle' && (
+              <span>Comprar agora</span>
+            )}
+            
+            {buttonState === 'loading' && (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Adicionando...</span>
+              </>
+            )}
+
+            {buttonState === 'success' && (
+              <>
+                <Check className="w-4 h-4 animate-in zoom-in" />
+                <span>Adicionado!</span>
+              </>
+            )}
+          </div>
         </Button>
       </div>
     </div>
