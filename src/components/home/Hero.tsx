@@ -11,7 +11,7 @@ export default function Hero() {
         {/* Camada 1: imagem de fundo */}
         <div className="absolute inset-0 w-full h-full bg-[url('/images/banners/hero-store.jpg')] bg-cover bg-center object-cover" />
         {/* Camada 2: gradiente sobreposto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FCF9EE]/95 via-[#FCF9EE]/70 to-[#FCF9EE]/20" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#FCF9EE]/95 via-[#FCF9EE]/70 to-[#FCF9EE]/20" />
       </div>
 
       <Container className="relative z-10 py-20 md:py-32 lg:py-40">
