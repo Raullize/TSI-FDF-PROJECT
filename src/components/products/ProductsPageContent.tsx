@@ -8,6 +8,7 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import Container from "@/components/ui/Container";
 import { PackageSearch, SlidersHorizontal, X, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -27,6 +28,10 @@ export default function ProductsPageContent({
   categories,
   initialCategory = null,
 }: ProductsPageContentProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     initialCategory
   );
@@ -40,8 +45,21 @@ export default function ProductsPageContent({
     setCurrentPage(1);
   }, [selectedCategory, sortBy, searchQuery]);
 
+  const handleCategoryChange = (cat: string | null) => {
+    setSelectedCategory(cat);
+    
+    // Update URL
+    const params = new URLSearchParams(searchParams.toString());
+    if (cat) {
+      params.set("category", cat);
+    } else {
+      params.delete("category");
+    }
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   const handleClearFilters = () => {
-    setSelectedCategory(null);
+    handleCategoryChange(null);
     setSortBy("relevance");
     setSearchQuery("");
   };
@@ -166,7 +184,7 @@ export default function ProductsPageContent({
                 selectedCategory={selectedCategory}
                 sortBy={sortBy}
                 searchQuery={searchQuery}
-                onCategoryChange={setSelectedCategory}
+                onCategoryChange={handleCategoryChange}
                 onSortChange={setSortBy}
                 onSearchChange={setSearchQuery}
                 onClearFilters={handleClearFilters}
@@ -276,14 +294,14 @@ export default function ProductsPageContent({
               <span className="sr-only">Close</span>
             </SheetClose>
           </SheetHeader>
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-hidden p-6 pb-2">
             <FilterSidebar
               categories={categories}
               selectedCategory={selectedCategory}
               sortBy={sortBy}
               searchQuery={searchQuery}
               onCategoryChange={(cat) => {
-                setSelectedCategory(cat);
+                handleCategoryChange(cat);
                 setMobileFiltersOpen(false);
               }}
               onSortChange={(sort) => {
