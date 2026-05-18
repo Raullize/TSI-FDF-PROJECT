@@ -8,6 +8,13 @@ import FeaturesSection from "@/components/home/FeaturesSection";
 import Container from "@/components/ui/Container";
 import { PackageSearch, SlidersHorizontal, X, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+} from '@/components/ui/Sheet';
 
 interface ProductsPageContentProps {
   products: Product[];
@@ -257,46 +264,38 @@ export default function ProductsPageContent({
       </Container>
 
       {/* Mobile Filter Drawer */}
-      {mobileFiltersOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/40 z-40 lg:hidden"
-            onClick={() => setMobileFiltersOpen(false)}
-          />
-          {/* Drawer */}
-          <div className="fixed inset-y-0 left-0 z-50 w-80 max-w-[90vw] bg-white shadow-2xl overflow-y-auto lg:hidden">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-black/5">
-              <span className="font-bold text-amber-950">Filtros</span>
-              <button
-                onClick={() => setMobileFiltersOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="p-4">
-              <FilterSidebar
-                categories={categories}
-                selectedCategory={selectedCategory}
-                sortBy={sortBy}
-                searchQuery={searchQuery}
-                onCategoryChange={(cat) => {
-                  setSelectedCategory(cat);
-                  setMobileFiltersOpen(false);
-                }}
-                onSortChange={(sort) => {
-                  setSortBy(sort);
-                  setMobileFiltersOpen(false);
-                }}
-                onSearchChange={setSearchQuery}
-                onClearFilters={handleClearFilters}
-                totalResults={filteredAndSorted.length}
-              />
-            </div>
+      <Sheet open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
+        <SheetContent side="left" showCloseButton={false} className="w-full sm:max-w-md p-0 bg-white border-r border-black/5 flex flex-col">
+          <SheetHeader className="p-6 border-b-4 border-[#FDBA24] bg-[#2E8B57] relative">
+            <SheetTitle className="flex items-center gap-2 text-white font-serif text-2xl">
+              Filtros
+            </SheetTitle>
+            <SheetClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white cursor-pointer">
+              <X className="w-5 h-5" />
+              <span className="sr-only">Close</span>
+            </SheetClose>
+          </SheetHeader>
+          <div className="flex-1 overflow-y-auto p-6">
+            <FilterSidebar
+              categories={categories}
+              selectedCategory={selectedCategory}
+              sortBy={sortBy}
+              searchQuery={searchQuery}
+              onCategoryChange={(cat) => {
+                setSelectedCategory(cat);
+                setMobileFiltersOpen(false);
+              }}
+              onSortChange={(sort) => {
+                setSortBy(sort);
+                setMobileFiltersOpen(false);
+              }}
+              onSearchChange={setSearchQuery}
+              onClearFilters={handleClearFilters}
+              totalResults={filteredAndSorted.length}
+            />
           </div>
-        </>
-      )}
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }
