@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import { HardHat, Home } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import FeaturesSection from '@/components/home/FeaturesSection';
 
 export const metadata: Metadata = {
   title: 'Sobre Nós | Armazém Girassol',
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="flex-1 flex flex-col min-h-[70vh]">
+      <FeaturesSection />
       <Container className="flex-1 flex flex-col items-center justify-center py-20">
         <div className="flex flex-col items-center justify-center text-center max-w-lg mx-auto bg-white p-10 rounded-3xl shadow-sm border border-black/5">
           <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-6">
