@@ -21,12 +21,14 @@ interface ProductsPageContentProps {
   products: Product[];
   categories: Category[];
   initialCategory?: string | null;
+  initialSearchQuery?: string;
 }
 
 export default function ProductsPageContent({
   products,
   categories,
   initialCategory = null,
+  initialSearchQuery = "",
 }: ProductsPageContentProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -36,7 +38,7 @@ export default function ProductsPageContent({
     initialCategory
   );
   const [sortBy, setSortBy] = useState<SortOption>("relevance");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 12;
@@ -44,6 +46,12 @@ export default function ProductsPageContent({
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory, sortBy, searchQuery]);
+
+  // Sync state with URL when navigating from other pages or using the header search
+  useEffect(() => {
+    setSearchQuery(searchParams.get("q") || "");
+    setSelectedCategory(searchParams.get("category"));
+  }, [searchParams]);
 
   const handleCategoryChange = (cat: string | null) => {
     setSelectedCategory(cat);
@@ -58,10 +66,21 @@ export default function ProductsPageContent({
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
+  const handleSearchChange = (q: string) => {
+    setSearchQuery(q);
+    const params = new URLSearchParams(searchParams.toString());
+    if (q) {
+      params.set("q", q);
+    } else {
+      params.delete("q");
+    }
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   const handleClearFilters = () => {
     handleCategoryChange(null);
     setSortBy("relevance");
-    setSearchQuery("");
+    handleSearchChange("");
   };
 
   const filteredAndSorted = useMemo(() => {
@@ -151,9 +170,13 @@ export default function ProductsPageContent({
               )}
             </nav>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-950 font-serif">
-              {selectedCategoryName
-                ? selectedCategoryName
-                : "Nossa Seleção Completa"}
+              {searchQuery ? (
+                <>Resultados para <span className="text-[#2E8B57]">"{searchQuery}"</span></>
+              ) : selectedCategoryName ? (
+                selectedCategoryName
+              ) : (
+                "Nossa Seleção Completa"
+              )}
             </h1>
             <p className="text-gray-500 mt-2 text-base">
               Produtos naturais selecionados com carinho para você e sua família.
@@ -186,7 +209,7 @@ export default function ProductsPageContent({
                 searchQuery={searchQuery}
                 onCategoryChange={handleCategoryChange}
                 onSortChange={setSortBy}
-                onSearchChange={setSearchQuery}
+                onSearchChange={handleSearchChange}
                 onClearFilters={handleClearFilters}
                 totalResults={filteredAndSorted.length}
               />
@@ -308,7 +331,7 @@ export default function ProductsPageContent({
                 setSortBy(sort);
                 setMobileFiltersOpen(false);
               }}
-              onSearchChange={setSearchQuery}
+              onSearchChange={handleSearchChange}
               onClearFilters={handleClearFilters}
               totalResults={filteredAndSorted.length}
             />

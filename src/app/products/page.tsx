@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 interface ProductsPageProps {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; q?: string }>;
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { category } = await searchParams;
+  const { category, q } = await searchParams;
   const [products, categories] = await Promise.all([
     getProducts(),
     getCategories(),
@@ -24,6 +24,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       products={products}
       categories={categories}
       initialCategory={category ?? null}
+      initialSearchQuery={q ?? ""}
     />
   );
 }
