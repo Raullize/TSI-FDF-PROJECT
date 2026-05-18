@@ -39,6 +39,7 @@ export default function CartSidebar({ children }: { children: React.ReactNode })
       <SheetContent showCloseButton={false} className="w-full sm:max-w-md flex flex-col p-0 border-l border-black/5 bg-[#FCF9EE]">
         <SheetHeader className="p-6 border-b-4 border-[#FDBA24] bg-[#2E8B57] relative">
           <SheetTitle className="flex items-center gap-2 text-white font-serif text-2xl">
+            <ShoppingCart className="w-6 h-6 text-[#FDBA24]" />
             Seu Carrinho
           </SheetTitle>
           <SheetClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white cursor-pointer">

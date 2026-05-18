@@ -268,6 +268,7 @@ export default function ProductsPageContent({
         <SheetContent side="left" showCloseButton={false} className="w-full sm:max-w-md p-0 bg-white border-r border-black/5 flex flex-col">
           <SheetHeader className="p-6 border-b-4 border-[#FDBA24] bg-[#2E8B57] relative">
             <SheetTitle className="flex items-center gap-2 text-white font-serif text-2xl">
+              <SlidersHorizontal className="w-6 h-6 text-[#FDBA24]" />
               Filtros
             </SheetTitle>
             <SheetClose className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-white/70 hover:text-white cursor-pointer">
