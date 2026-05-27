@@ -34,27 +34,25 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center py-10 md:py-20">
-            <div className="flex flex-col items-center justify-center text-center max-w-lg mx-auto bg-white p-10 rounded-3xl shadow-sm border border-black/5">
-              <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-6">
-                <HardHat className="w-12 h-12 text-[#2E8B57]" />
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-950 mb-4">
-                Em Construção
-              </h2>
-              
-              <p className="text-gray-500 text-lg mb-8">
-                Estamos preparando uma página especial para contar a nossa história. Em breve, você poderá conhecer mais sobre a essência do Armazém Girassol.
-              </p>
-              
-              <Link href="/">
-                <Button className="flex items-center gap-2 px-8 py-6 rounded-full bg-[#2E8B57] text-white hover:bg-green-700 transition-colors shadow-md text-lg">
-                  <Home className="w-5 h-5" />
-                  Voltar para o Início
-                </Button>
-              </Link>
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center bg-[#FFFDF4] rounded-3xl border border-black/5 shadow-sm">
+            <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-6">
+              <HardHat className="w-12 h-12 text-[#2E8B57] opacity-60" />
             </div>
+            
+            <h2 className="text-3xl font-serif font-bold text-amber-950 mb-4">
+              Em Construção
+            </h2>
+            
+            <p className="text-gray-600 max-w-md mx-auto mb-8 text-lg">
+              Estamos preparando uma página especial para contar a nossa história. Em breve, você poderá conhecer mais sobre a essência do Armazém Girassol.
+            </p>
+            
+            <Link href="/">
+              <Button className="py-6 px-10 text-lg rounded-full shadow-md bg-[#2E8B57] hover:bg-green-700 text-white font-bold transition-all border-none flex items-center gap-2">
+                <Home className="w-5 h-5" />
+                Voltar para o Início
+              </Button>
+            </Link>
           </div>
         </div>
       </Container>
