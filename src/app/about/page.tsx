@@ -2,9 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
-import { HardHat, Home, ChevronRight } from 'lucide-react';
+import { HardHat, Home, ChevronRight, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import FeaturesSection from '@/components/home/FeaturesSection';
+import LiveWeather from '@/components/about/LiveWeather';
+import LiveVisitors from '@/components/about/LiveVisitors';
 
 export const metadata: Metadata = {
   title: 'Sobre Nós | Armazém Girassol',
@@ -36,21 +38,29 @@ export default function AboutPage() {
 
           <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center bg-[#FFFDF4] rounded-3xl border border-black/5 shadow-sm">
             <div className="w-24 h-24 bg-[#F5EED8] rounded-full flex items-center justify-center mb-6">
-              <HardHat className="w-12 h-12 text-[#2E8B57] opacity-60" />
+              <Leaf className="w-12 h-12 text-[#2E8B57] opacity-80" />
             </div>
             
             <h2 className="text-3xl font-serif font-bold text-amber-950 mb-4">
-              Em Construção
+              Nossa Essência
             </h2>
             
-            <p className="text-gray-600 max-w-md mx-auto mb-8 text-lg">
-              Estamos preparando uma página especial para contar a nossa história. Em breve, você poderá conhecer mais sobre a essência do Armazém Girassol.
+            <p className="text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
+              O Armazém Girassol nasceu do desejo de reconectar as pessoas com a natureza através da alimentação.
+              Acreditamos que cada produto natural carrega consigo não apenas nutrientes, mas também história,
+              cuidado e respeito pelo meio ambiente.
             </p>
+
+            {/* Componentes em Tempo Real */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl px-4 mb-12">
+              <LiveWeather />
+              <LiveVisitors />
+            </div>
             
             <Link href="/">
               <Button className="py-6 px-10 text-lg rounded-full shadow-md bg-[#2E8B57] hover:bg-green-700 text-white font-bold transition-all border-none flex items-center gap-2">
                 <Home className="w-5 h-5" />
-                Voltar para o Início
+                Voltar para a Loja
               </Button>
             </Link>
           </div>
