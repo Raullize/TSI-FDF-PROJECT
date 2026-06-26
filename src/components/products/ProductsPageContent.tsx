@@ -342,7 +342,7 @@ export default function ProductsPageContent() {
                         Anterior
                       </button>
 
-                      <div className="flex gap-1 overflow-x-auto max-w-[200px] sm:max-w-none scrollbar-hide">
+                      <div className="flex gap-1 overflow-x-auto max-w-50 sm:max-w-none scrollbar-hide">
                         {[...Array(totalPages)].map((_, i) => (
                           <button
                             key={i + 1}

@@ -51,7 +51,6 @@ export default function FeaturedSection({
   useEffect(() => {
     if (!emblaApi) return;
 
-    // Use requestAnimationFrame to avoid synchronous state updates during initial render
     requestAnimationFrame(() => {
       initCarousel();
     });
